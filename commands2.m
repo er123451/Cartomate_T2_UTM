@@ -2,15 +2,11 @@ classdef commands2
     %COMMANDS2 Summary of this class goes here
     %   Detailed explanation goes here
     
-    properties
-        Property1
-    end
-    
-    methods
-        function obj = commands2(inputArg1,inputArg2)
-            %COMMANDS2 Construct an instance of this class
-            %   Detailed explanation goes here
-            obj.Property1 = inputArg1 + inputArg2;
+    methods (Static)
+        function (x,y) = GKdir(lat,long,k0,tx,ty)
+            %GKdir problema directo de la proyección de Gauß-Krüger
+            %mediante el método aproximado.
+            x = tx +k0*(
         end
         
         function outputArg = method1(obj,inputArg)
