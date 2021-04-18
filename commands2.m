@@ -3,16 +3,49 @@ classdef commands2
     %   Detailed explanation goes here
     
     methods (Static)
-        function (x,y) = GKdir(lat,long,k0,tx,ty)
+        function [x,y] = GKdir(lat,long,long0,k0,tx,ty,a,invf)
             %GKdir problema directo de la proyección de Gauß-Krüger
             %mediante el método aproximado.
-            x = tx +k0*(
+            Along = long-long0;
+            [q0,q1,q2,q3,q4,q5,q6,q7,q8,q9] = commands2.fq(lat,a,invf);
+            x = tx +k0*(q1*Along-q3*Along^3/6+q5*Along^5/120-q7*Along^7/5040+q9*Along^9/362880);
+            y = ty +k0*(q0-q2*Along^2/2+q4*Along^4/24-q6*Along^6/720+q8*Along^8/40320);
         end
         
         function outputArg = method1(obj,inputArg)
             %METHOD1 Summary of this method goes here
             %   Detailed explanation goes here
             outputArg = obj.Property1 + inputArg;
+        end
+    end
+    methods (Static)
+        function [q0,q1,q2,q3,q4,q5,q6,q7,q8,q9] = fq(lat,a,invf)
+           %-----------cte--------------------------
+           [f,e2,e] = commands.cteElli(a,invf);
+           ei = e/sqrt(1-e2);
+           v =  a*(1-e2*(sin(lat))^2)^(-1/2);
+           t = tan(lat);
+           n = ei*cos(lat);
+           %---------------valores q----------------
+           q0 = commands.lat2lam(lat,a,invf);
+           q1 = v*cos(lat);
+           
+           q2 = -v*cos(lat)^2;
+           
+           q3 = -v*cos(lat)^3*(1-t^2+n^2);
+           
+           q4 = -v*cos(lat)^4*(5-t^2+n^2*(9+4*n^2));
+           
+           q5 = v*cos(lat)^5*(5-t^2*(18-t^2)+n^2*(14+13*n^2)-n^2*t^2*(58+64*n^2));
+           
+           q6 = -v*t*cos(lat)*(61-t^2*(58-t^2)+n^2*(270+445*n^2)-330*n^2*t^2);
+           
+           q7 = -v*cos(lat)^7*(61-t^2*(479-179*t^2+t^4)+331*n^2-3298*n^2*t^2+1771*n^2*t^4);
+           
+           q8 = v*t*cos(lat)^8*(1385-t^2*(3111-543*t^2)+10899*n^2-32802*n^2*t^2);
+           
+           q9 = v*cos(lat)^9*(1385-t^2*(19028-18270*t^2));
+           
         end
     end
 end

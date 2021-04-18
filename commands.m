@@ -84,6 +84,12 @@ classdef commands
            end
            lat = lat1*180/pi;
         end 
+        function [f,e2,e] = cteElli(a,invf)
+            f = 1/invf;
+            b = a*(1-f);
+            e2 = (a^2-b^2)/a^2;
+            e = sqrt(e2);
+        end
     end
     
     
@@ -108,13 +114,6 @@ classdef commands
             g4 = 4/7*e^6*sin(lat)^6;
             g5 = 5/9*e^8*sin(lat)^8;
             g6 = 6/11*e^10*sin(lat)^10;
-        end
-        
-        function [f,e2,e] = cteElli(a,invf)
-            f = 1/invf;
-            b = a*(1-f);
-            e2 = (a^2-b^2)/a^2;
-            e = sqrt(e2);
         end
     end
 end
