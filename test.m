@@ -8,7 +8,7 @@ k0 = data(2,2);
 data1 = data(3:m,:);
 for i = 1:(m-3)
     [x,y] = commands2.GKdir(data1(i,1),data1(i,2),long0,k0,0,0,a,invf);
-    fprintf(fid,'\n%.4f\t%.4f\n',x,y);
+    fprintf(fid,'%.4f\t%.4f\n',x,y);
 end
 fclose(fid);
 
