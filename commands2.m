@@ -24,7 +24,7 @@ classdef commands2
            t = tan(lat);
            n = ei*cos(lat);
            %---------------valores q----------------
-           q0 = commands.lat2lam(a,invf,lat);
+           q0 = commands.lat2lam(a,invf,lat*180/pi);
            
            q1 = v*cos(lat);
            
