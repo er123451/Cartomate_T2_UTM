@@ -2,7 +2,7 @@
 file = "datos-practica-2.txt";
 %------------------------------------------
 
-fid = fopen("sal-P2a-02785633B","w");
+fid = fopen("sal-P2a","w");
 data = load(file);
 a = data(1,1);
 invf = data(2,1);
@@ -11,7 +11,6 @@ k0 = data(2,2);
 [m,n] = size(data);
 data1 = data(3:m,:);
 data2 = data(1:2,:);
-fprintf(fid,'%%Ernesto Hontecillas Molina, DNI: 02785633B\n');
 fprintf(fid,'%f\t%f\t0\t0\n',data2(1,:));
 fprintf(fid,'%.9f\t%f\t0\t0\n',data2(2,:));
 for i = 1:(m-3)
