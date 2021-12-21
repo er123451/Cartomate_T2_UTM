@@ -1,9 +1,8 @@
-%Ernesto Hontecillas Molina, DNI: 02785633B
 %-------------Archivo a cargar-------------
-file = "sal-P2a-02785633B";
+file = "sal-P2a";
 %------------------------------------------
 
-fid = fopen("sal-P2b-02785633B","w");
+fid = fopen("sal-P2b","w");
 data = load(file);
 a = data(1,1);
 invf = data(2,1);
