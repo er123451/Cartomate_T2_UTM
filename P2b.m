@@ -11,7 +11,6 @@ k0 = data(2,2);
 [m,n] = size(data);
 data1 = data(3:m,1:2);
 data2 = data(1:2,1:2);
-fprintf(fid,'%%Ernesto Hontecillas Molina, DNI: 02785633B\n');
 fprintf(fid,'%.6f\t%.6f\n',data2(1,:));
 fprintf(fid,'%.6f\t%.6f\n',data2(2,:));
 for i = 1:(m-3)
