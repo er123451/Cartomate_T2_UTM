@@ -1,4 +1,3 @@
-%Ernesto Hontecillas Molina, DNI: 02785633B
 %-------------Archivo a cargar-------------
 file = "datos-practica-2.txt";
 %------------------------------------------
